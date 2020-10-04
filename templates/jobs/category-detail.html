@@ -1,0 +1,265 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="hero-wrap js-fullheight" style="background-image: url('{% static 'images/bg_2.jpg' %}');"
+         data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start"
+                 data-scrollax-parent="true">
+                <div class="col-xl-10 ftco-animate mb-5 pb-5" data-scrollax=" properties: { translateY: '70%' }">
+                    <p class="mb-4 mt-5 pt-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">We have
+                        <span class="number" data-number="850000">0</span> great job offers you deserve!</p>
+                    <h1 class="mb-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Your Dream
+                        <br><span>Job is Waiting</span></h1>
+
+                    <div class="ftco-search">
+                        <div class="row">
+                            <div class="col-md-12 nav-link-wrap">
+                                <div class="nav nav-pills text-center" id="v-pills-tab" role="tablist"
+                                     aria-orientation="vertical">
+                                    <a class="nav-link active mr-md-1" id="v-pills-1-tab" data-toggle="pill"
+                                       href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">Find
+                                        a Job</a>
+
+                                    <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2"
+                                       role="tab" aria-controls="v-pills-2" aria-selected="false">Find a Candidate</a>
+
+                                </div>
+                            </div>
+                            <div class="col-md-12 tab-wrap">
+
+                                <div class="tab-content p-4" id="v-pills-tabContent">
+
+                                    <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel"
+                                         aria-labelledby="v-pills-nextgen-tab">
+                                        <form action="{% url 'jobs:search_job' %}" class="search-job" method="get">
+                                            <div class="row">
+                                                <div class="col-md">
+                                                    <div class="form-group">
+                                                        <div class="form-field">
+                                                            <div class="icon"><span class="icon-briefcase"></span></div>
+                                                            <input type="text" name="job_title" class="form-control" placeholder="eg. Garphic. Web Developer">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md">
+                                                    <div class="form-group">
+                                                        <div class="form-field">
+                                                            <div class="select-wrap">
+                                                                <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                                                                <select name="job_type" id="" class="form-control">
+                                                                    <option value="full_time">Full Time</option>
+                                                                    <option value="part_time">Part Time</option>
+                                                                    <option value="freelance">Freelance</option>
+                                                                    <option value="internship">Internship</option>
+                                                                    <option value="temporary">Temporary</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md">
+                                                    <div class="form-group">
+                                                        <div class="form-field">
+                                                            <div class="icon"><span class="icon-map-marker"></span></div>
+                                                            <input type="text" name="job_location" class="form-control" placeholder="Location">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md">
+                                                    <div class="form-group">
+                                                        <div class="form-field">
+                                                            <input type="submit" value="Search" class="form-control btn btn-primary">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="v-pills-2" role="tabpanel"
+                                         aria-labelledby="v-pills-performance-tab">
+                                        <form action="#" class="search-job">
+                                            <div class="row">
+                                                <div class="col-md">
+                                                    <div class="form-group">
+                                                        <div class="form-field">
+                                                            <div class="icon"><span class="icon-user"></span></div>
+                                                            <input type="text" class="form-control"
+                                                                   placeholder="eg. Adam Scott">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md">
+                                                    <div class="form-group">
+                                                        <div class="form-field">
+                                                            <div class="select-wrap">
+                                                                <div class="icon"><span
+                                                                        class="ion-ios-arrow-down"></span></div>
+                                                                <select name="" id="" class="form-control">
+                                                                    {% for jobtype in jobs.job_type %}
+                                                                    <option value="">{{ jobtype }}</option>
+                                                                    {% endfor %}
+
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md">
+                                                    <div class="form-group">
+                                                        <div class="form-field">
+                                                            <div class="icon"><span class="icon-map-marker"></span>
+                                                            </div>
+                                                            <input type="text" class="form-control"
+                                                                   placeholder="Location">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md">
+                                                    <div class="form-group">
+                                                        <div class="form-field">
+                                                            <input type="submit" value="Search"
+                                                                   class="form-control btn btn-primary">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <section class="ftco-section bg-light">
+        <div class="container">
+            <div class="row justify-content-center mb-5 pb-3">
+                <div class="col-md-7 heading-section text-center ftco-animate">
+                    <span class="subheading">Current Jobs for {{ category.title }}</span>
+                    <h2 class="mb-4"><span>Recent</span> Jobs</h2>
+                </div>
+            </div>
+            <div class="row">
+                {% for job in jobs %}
+                    <div class="col-md-12 ftco-animate">
+                        <div class="job-post-item bg-white p-4 d-block d-md-flex align-items-center">
+
+                            <div class="mb-4 mb-md-0 mr-5">
+                                <div class="job-post-item-header d-flex align-items-center">
+                                    <h2 class="mr-3 text-black h4">{{ job.title }}</h2>
+                                    <div class="badge-wrap">
+                                        {% if job.job_type == 'full_time' %}
+                                            <span class="bg-info text-white badge py-2 px-3">Full Time</span>
+                                        {% elif job.job_type == 'part_time' %}
+                                            <span class="bg-warning text-white badge py-2 px-3">Part TIme</span>
+                                        {% elif job.job_type == 'freelance' %}
+                                            <span class="bg-primary text-white badge py-2 px-3">FreeLance</span>
+                                        {% elif job.job_type == 'internship' %}
+                                            <span class="bg-danger text-white badge py-2 px-3">Internship</span>
+                                        {% elif job.job_type == 'temporary' %}
+                                            <span class="bg-secondary text-white badge py-2 px-3">Temporary</span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="job-post-item-body d-block d-md-flex">
+                                    <div class="mr-3"><span class="icon-layers"></span> <a
+                                            href="#">{{ job.company }}</a>
+                                    </div>
+                                    <div><span class="icon-my_location"></span> <span>{{ job.location }}</span></div>
+                                </div>
+                            </div>
+
+                            <div class="ml-auto d-flex">
+                                <a href="{% url 'jobs:job_detail' job.slug job.pk %}" class="btn btn-primary py-2 mr-1">Apply Job</a>
+                                <a href="#"
+                                   class="btn btn-secondary rounded-circle btn-favorite d-flex align-items-center icon">
+                                    <span class="icon-heart"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div> <!-- end -->
+                {% endfor %}
+            </div>
+            <div class="row mt-5">
+                {% if is_paginated %}
+                    <div class="col text-center">
+                        <div class="block-27">
+                            <ul>
+                                {% if page_obj.has_previous %}
+                                    <li><a href="?page={{ page_obj.previous_page_number }}">&lt;</a></li>
+                                {% else %}
+                                    <li class="disabled"><a href="#">&lt;</a>
+                                    </li>
+                                {% endif %}
+                                {% for i in paginator.page_range %}
+                                    {% if page_obj.number == i %}
+                                        <li class="active"><span>{{ i }}</span></li>
+                                    {% else %}
+                                        <li><a href="?page={{ i }}">{{ i }}</a></li>
+                                    {% endif %}
+                                {% endfor %}
+                                {% if page_obj.has_next %}
+                                    <li><a href="?page={{ page_obj.next_page_number }}">&gt;</a></li>
+                                {% else %}
+                                    <li class="disabled"><span>&gt;</span></li>
+                                {% endif %}
+
+                            </ul>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+    <section class="ftco-section ftco-counter">
+        <div class="container">
+            <div class="row justify-content-center mb-5 pb-3">
+                <div class="col-md-7 heading-section text-center ftco-animate">
+                    <span class="subheading">Categories work waiting for you</span>
+                    <h2 class="mb-4"><span>Current</span> Job Posts</h2>
+                </div>
+            </div>
+            <div class="row">
+                {% for category in categories %}
+                    <div class="col-md-3 ftco-animate">
+                        <ul class="category">
+                            <li><a href="{% url 'jobs:category_detail' category.slug category.pk %}">{{ category.title }} <span class="number" data-number="{{ category.job_count }}">0</span></a></li>
+                        </ul>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <section class="ftco-section-parallax">
+        <div class="parallax-img d-flex align-items-center">
+            <div class="container">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
+                        <h2>Subcribe to our Newsletter</h2>
+                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
+                            there live the blind texts. Separated they live in</p>
+                        <div class="row d-flex justify-content-center mt-4 mb-4">
+                            <div class="col-md-8">
+                                <form action="#" class="subscribe-form">
+                                    <div class="form-group d-flex">
+                                        <input type="text" class="form-control" placeholder="Enter email address">
+                                        <input type="submit" value="Subscribe" class="submit px-3">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

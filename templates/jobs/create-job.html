@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="hero-wrap js-fullheight" style="background-image: url('{% static 'images/bg_2.jpg' %}');"
+         data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start"
+                 data-scrollax-parent="true">
+                <div class="col-md-8 ftco-animate text-center text-md-left mb-5"
+                     data-scrollax=" properties: { translateY: '70%' }">
+                    <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span
+                            class="mr-3"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span>
+                        <span>Post A Job</span></p>
+                    <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Post a
+                        Job</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ftco-section bg-light">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-12 col-lg-8 mb-5">
+                    {% if user.is_employer %}
+                        <form action="#" class="p-5 bg-white" method="post">
+                            {% csrf_token %}
+                            {% if form.errors %}
+                                <div class="alert alert-danger alert-dismissable" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <div id="form_errors">
+                                        {% for key,value in form.errors.items %}
+                                            <span class="fieldWrapper">
+                                        {{ key }} : {{ value }}
+                                    </span>
+                                        {% endfor %}
+                                    </div>
+
+                                </div>
+                            {% endif %}
+                            {% for field in form.visible_fields|slice:"3" %}
+
+                                <div class="row form-group">
+                                    <div class="col-md-12 mb-3 mb-md-0">
+                                        <label class="font-weight-bold" for="fullname">{{ field.label }}</label>
+                                        <input type="{{ field.field.widget.input_type }}" id="fullname"
+                                               class="form-control"
+                                               placeholder="{{ field.label }}" name="{{ field.html_name }}">
+                                    </div>
+                                </div>
+
+
+                            {% endfor %}
+
+                            <div class="row form-group">
+                                <div class="col-md-12"><h3>Job Type</h3></div>
+                                <div class="col-md-12 mb-3 mb-md-0">
+                                    <label for="option-job-type-1">
+                                        {{ form.job_type }}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-12"><h3>Job Category</h3></div>
+                                <div class="col-md-12 mb-3 mb-md-0">
+                                    <label for="option-job-type-1">
+                                        {{ form.category }}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-12">
+                                    <h3>Job Description</h3>
+                                </div>
+                                <div class="col-md-12 mb-3 mb-md-0">
+                                    <label for="option-job-type-1">
+                                        {{ form.media }}
+                                        {{ form.description }}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-12">
+                                    <input type="submit" value="Post" class="btn btn-primary  py-2 px-5">
+                                </div>
+                            </div>
+                        </form>
+                    {% else %}
+                        <h1>You dont have the permission to do so!</h1>
+                    {% endif %}
+                </div>
+
+                {% include 'sidebar.html' %}
+            </div>
+        </div>
+    </div>
+
+
+    <section class="ftco-section-parallax">
+        <div class="parallax-img d-flex align-items-center">
+            <div class="container">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
+                        <h2>Subcribe to our Newsletter</h2>
+                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
+                            there live the blind texts. Separated they live in</p>
+                        <div class="row d-flex justify-content-center mt-4 mb-4">
+                            <div class="col-md-8">
+                                <form action="#" class="subscribe-form">
+                                    <div class="form-group d-flex">
+                                        <input type="text" class="form-control" placeholder="Enter email address">
+                                        <input type="submit" value="Subscribe" class="submit px-3">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <!-- loader -->
+    <!--div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div-->
+{% endblock %}
